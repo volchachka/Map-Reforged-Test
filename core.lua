@@ -204,6 +204,13 @@ function objects.object( ... )
 end
 
 
+---@param x real
+---@param y real
+---@param r real 
+function gfletch( x, y, r )
+    GroupEnumUnitsInRange( Game.Squad, x, y, r, nil )
+end
+
 function bootCore()
     Map.World = GetWorldBounds()
 
