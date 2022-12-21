@@ -1,6 +1,4 @@
-
-
-
+-- Speical Initializator
 function FastBoot()
     bootCore()
     bootExer()

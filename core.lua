@@ -207,8 +207,12 @@ end
 ---@param x real
 ---@param y real
 ---@param r real 
-function gfletch( x, y, r )
+function gfletch( x, y, r, ... )
+    local forSquad = ...
     GroupEnumUnitsInRange( Game.Squad, x, y, r, nil )
+    if forSquad and type(forSquad) == "function" then
+        forSquad()
+    end
 end
 
 function bootCore()
@@ -217,7 +221,7 @@ function bootCore()
     const.fix_xx = GetRectMaxX(Map.World) - 100.0
     const.fix_xy = GetRectMaxY(Map.World) - 100.0
     const.fix_mx = GetRectMinX(Map.World) + 100.0
-    const.fix_mu = GetRectMinX(Map.World) + 100.0
+    const.fix_my = GetRectMinY(Map.World) + 100.0
 
     Game.Squad  = CreateGroup()
     Game.Xash   = InitHashtable()

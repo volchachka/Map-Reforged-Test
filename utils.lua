@@ -32,3 +32,19 @@ function RV2X(r)
     end
      return 0
 end
+
+function callback( time, ... )
+    local isRepeat = time < 0
+    local timeout  = isRepeat and time * (-1) or time
+    local code, timer = ...
+        if not timer then
+            timer = CreateTimer()
+        end
+    if code then
+        TimerStart(timer, timeout, isRepeat, code )
+    else
+        TimerStart( timer, timeout, isRepeat, nil )
+    end 
+
+    return timer
+end
